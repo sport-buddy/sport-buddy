@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -17,10 +16,7 @@ class CreateEventForm extends Component {
         </FormControl>
         <FormControl margin="normal" required fullWidth>
           <InputLabel htmlFor="lastName">Last name</InputLabel>
-          <Input
-            name="lastName"
-            id="lastName"
-          />
+          <Input name="lastName" id="lastName" />
         </FormControl>
         <Button
           type="submit"
@@ -32,8 +28,8 @@ class CreateEventForm extends Component {
           Create
         </Button>
       </form>
-    )
+    );
   }
 }
 
-export default withStyles()(CreateEventForm);
+export default CreateEventForm;

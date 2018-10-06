@@ -4,19 +4,18 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Logo from '../../assets/images/10million.png';
+import MenuDrawer from './MenuDrawer';
 
 const styles = theme => ({
   root: {
@@ -94,21 +93,9 @@ class PrimarySearchAppBar extends React.Component {
     mobileMoreAnchorEl: null
   };
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
-  };
-
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
-
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
   };
 
   render() {
@@ -125,8 +112,8 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
       </Menu>
     );
 
@@ -173,12 +160,22 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
+        <MenuDrawer
+          isMenuOpen={this.props.isMenuOpen}
+          closeMenuAction={this.props.closeMenuAction}
+          openMenuAction={this.props.openMenuAction}
+        />
         <AppBar position="static">
           <Toolbar>
             <IconButton
               className={classes.menuButton}
               color="inherit"
               aria-label="Open drawer"
+              onClick={() => {
+                this.props.isMenuOpen
+                  ? this.props.closeMenuAction(false)
+                  : this.props.openMenuAction(true);
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -192,7 +189,12 @@ class PrimarySearchAppBar extends React.Component {
                 SportBuddy
               </Typography>
             </div>
-            <img src={Logo} width="100px" className="margin-left-10" />
+            <img
+              src={Logo}
+              alt="logo"
+              width="100px"
+              className="margin-left-10"
+            />
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import testReducer from "./test.reducer";
+import { combineReducers } from 'redux';
+import navReducer from './nav.reducer';
 
 const reducers = combineReducers({
-  testReducer
+  navReducer
 });
 
 export default reducers;
