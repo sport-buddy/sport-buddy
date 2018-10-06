@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Search } from 'react-store-locator';
 import { Map } from 'react-store-locator';
+import { MAP_API_KEY } from '../../config';
+import EventInfoModal from "./EventInfoModal";
 
 class Home extends Component {
   render() {
@@ -16,26 +17,27 @@ class Home extends Component {
         id: 2,
         lat: 50,
         lng: 25.2,
-        show: true,
+        show: false,
         name: 'Second Marker'
       },
       {
         id: 3,
         lat: 50,
         lng: 25.3,
-        show: true,
+        show: false,
         name: 'Third Marker'
       }
     ];
 
     return (
       <div className="MapLocator">
-        <Map
-          height={'600'}
-          width={'500px'}
-          locations={locations}
-          googleApiKey={'Your Key Here'}
-        />
+        <Map locations={locations} googleApiKey={MAP_API_KEY}>
+          {(location, closeLocation) => {
+            return (
+              <EventInfoModal location={location} closeLocation={closeLocation} />
+            )
+          }}
+        </Map>
       </div>
     );
   }
