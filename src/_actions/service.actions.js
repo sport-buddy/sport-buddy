@@ -1,5 +1,5 @@
 import { fetchCategories, fetchLocations } from '../services/services';
-import { FETCH_CATEGORIES, FETCH_LOCATIONS } from './types';
+import { FETCH_CATEGORIES, FETCH_LOCATIONS, FILTER_LOCATION } from './types';
 
 export const fetchCategoriesAction = () => {
   return function(dispatch) {
@@ -20,7 +20,11 @@ export const fetchLocationsActions = () => {
   return function(dispatch) {
     return fetchLocations()
       .then(response => {
-        return dispatch({ type: FETCH_LOCATIONS, payload: response.data });
+        dispatch({ type: FETCH_LOCATIONS, payload: response.data });
+        return dispatch({
+          type: FILTER_LOCATION,
+          payload: { data: response.data, type: 'basketball' }
+        });
       })
       .catch(error => {
         if (error) {

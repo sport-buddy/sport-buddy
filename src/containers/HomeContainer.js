@@ -5,7 +5,8 @@ import * as actions from '../_actions';
 const mapStateToProps = state => {
   return {
     categoriesReducer: state.categoriesReducer,
-    locationReducer: state.locationReducer
+    locationReducer: state.locationReducer,
+    filterLocations: state.filterLocationsReducer
   };
 };
 

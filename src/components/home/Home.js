@@ -40,7 +40,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.locationReducer.data);
+    console.log(this.props.filterLocations.data);
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
