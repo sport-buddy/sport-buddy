@@ -13,3 +13,10 @@ export function fetchCategories() {
     config
   );
 }
+
+export function fetchLocations() {
+  return axios.get(
+    'https://shrouded-inlet-61901.herokuapp.com/locations',
+    config
+  );
+}

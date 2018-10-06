@@ -36,9 +36,11 @@ const styles = theme => ({
 class Home extends Component {
   componentDidMount() {
     this.props.fetchCategoriesAction();
+    this.props.fetchLocationsActions();
   }
 
   render() {
+    console.log(this.props.locationReducer.data);
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
@@ -64,7 +66,10 @@ class Home extends Component {
               </div>
             </Grid>
           </Grid>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
         </div>
       </MuiThemeProvider>
     );

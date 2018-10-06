@@ -1,18 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {Info} from 'react-store-locator';
+import { Info } from 'react-store-locator';
 import Location from '../location/Location';
 import Paper from '@material-ui/core/Paper';
 
 class EventInfoModal extends Component {
-
   render() {
     let location = this.props.location;
     let closeLocation = this.props.closeLocation;
 
     const infoStyle = {
       width: '300px',
-      height: '200px',
+      height: '200px'
     };
 
     const { classes } = this.props;
@@ -26,7 +25,7 @@ class EventInfoModal extends Component {
           </Paper>
         </div>
       </Info>
-    )
+    );
   }
 }
 
