@@ -17,10 +17,6 @@ class EventInfoModal extends Component {
 
     const { classes } = this.props;
 
-    if (location.show) {
-      console.log('memes');
-    }
-
     return (
       <Info show={location.show} style={infoStyle}>
         <div>

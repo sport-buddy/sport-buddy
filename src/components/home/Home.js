@@ -64,6 +64,7 @@ class Home extends Component {
               </div>
             </Grid>
           </Grid>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
         </div>
       </MuiThemeProvider>
     );

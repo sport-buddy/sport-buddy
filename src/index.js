@@ -15,7 +15,7 @@ const store = createStoreWithMiddleware(reducers);
 render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
   </BrowserRouter>,
   document.getElementById("root")
