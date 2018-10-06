@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Map } from 'react-store-locator';
 import { MAP_API_KEY } from '../../config';
 import EventInfoModal from "./EventInfoModal";
+import icon from '../../assets/images/basketball-icon.png';
 
 class Home extends Component {
   render() {
@@ -31,7 +32,7 @@ class Home extends Component {
 
     return (
       <div className="MapLocator">
-        <Map locations={locations} googleApiKey={MAP_API_KEY}>
+        <Map locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
           {(location, closeLocation) => {
             return (
               <EventInfoModal location={location} closeLocation={closeLocation} />
