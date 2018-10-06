@@ -1,2 +1,8 @@
 .MapLocator {
 }
+
+.Header {
+  height: 60px;
+  width: 100vw;
+  background: #ffeb3b;
+}
