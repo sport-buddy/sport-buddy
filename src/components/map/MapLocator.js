@@ -35,7 +35,7 @@ class Home extends Component {
         <Map locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
           {(location, closeLocation) => {
             return (
-              <EventInfoModal location={location} closeLocation={closeLocation} />
+              <EventInfoModal location={location} closeLocation={closeLocation}/>
             )
           }}
         </Map>
