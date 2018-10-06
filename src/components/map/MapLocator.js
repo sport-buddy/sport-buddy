@@ -30,12 +30,19 @@ class Home extends Component {
       }
     ];
 
+    const mapStyle = {
+      transition: {
+        value: 0,
+        important: true,
+      }
+    };
+
     return (
       <div className="MapLocator">
-        <Map locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
+        <Map locations={locations} googleApiKey={MAP_API_KEY} icon={icon} mapStyle={mapStyle}>
           {(location, closeLocation) => {
             return (
-              <EventInfoModal location={location} closeLocation={closeLocation} />
+              <EventInfoModal location={location} closeLocation={closeLocation}/>
             )
           }}
         </Map>

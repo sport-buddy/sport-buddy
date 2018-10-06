@@ -14,17 +14,18 @@ class CreateEventForm extends Component {
           <InputLabel htmlFor="firstName">First name</InputLabel>
           <Input id="firstName" name="firstName" autoFocus />
         </FormControl>
+
         <FormControl margin="normal" required fullWidth>
           <InputLabel htmlFor="lastName">Last name</InputLabel>
           <Input name="lastName" id="lastName" />
         </FormControl>
-        <Button
-          type="submit"
-          fullWidth
-          variant="raised"
-          color="primary"
-          className={classes.submit}
-        >
+
+        <FormControl margin="normal" required fullWidth>
+          <InputLabel htmlFor="lastName">Last name</InputLabel>
+          <Input name="lastName" id="lastName" />
+        </FormControl>
+
+        <Button type="submit" fullWidth variant="raised" color="primary" className={classes.submit}>
           Create
         </Button>
       </form>
