@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Search } from 'react-store-locator';
 import { Map } from 'react-store-locator';
-import Header from '../shared/Header';
-import Navbar from '../shared/Navbar';
 import MapLocator from '../map/MapLocator';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -11,6 +9,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import yellow from '@material-ui/core/colors/yellow';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import NavContainer from '../../containers/NavContainer';
 
 const theme = createMuiTheme({
   palette: {
@@ -45,7 +44,7 @@ class Home extends Component {
         <div className="Home">
           <Grid container spacing={24}>
             <Grid item xs={12}>
-              <Navbar />
+              <NavContainer />
             </Grid>
             <Grid item xs={12} sm={5}>
               <div className={classes.paper}>

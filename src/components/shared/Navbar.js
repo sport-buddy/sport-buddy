@@ -17,6 +17,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Logo from '../../assets/images/10million.png';
+import MenuDrawer from './MenuDrawer';
 
 const styles = theme => ({
   root: {
@@ -91,7 +92,8 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    isMenuOpen: false
   };
 
   handleProfileMenuOpen = event => {
@@ -171,8 +173,11 @@ class PrimarySearchAppBar extends React.Component {
       </Menu>
     );
 
+    console.log(this.props.isMenuOpen);
+
     return (
       <div className={classes.root}>
+        <MenuDrawer isMenuOpen={this.props.isMenuOpen} />
         <AppBar position="static">
           <Toolbar>
             <IconButton
