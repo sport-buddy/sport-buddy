@@ -34,6 +34,8 @@ const styles = theme => ({
 
 class Home extends Component {
   render() {
+    this.props.fetchCategoriesAction();
+
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
