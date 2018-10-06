@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import NavContainer from '../../containers/NavContainer';
+import SportFilters from './SportFilters';
 
 const theme = createMuiTheme({
   palette: {
@@ -33,17 +34,25 @@ const styles = theme => ({
 });
 
 class Home extends Component {
-  render() {
+  componentDidMount() {
     this.props.fetchCategoriesAction();
+  }
 
+  render() {
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
         <div className="Home">
+          <Grid item xs={12}>
+            <NavContainer />
+          </Grid>
+          <Grid item xs={12}>
+            <SportFilters
+              fetchCategoriesAction={this.props.fetchCategoriesAction}
+              categoriesReducer={this.props.categoriesReducer}
+            />
+          </Grid>
           <Grid container spacing={24}>
-            <Grid item xs={12}>
-              <NavContainer />
-            </Grid>
             <Grid item xs={12} sm={5}>
               <div className={classes.paper}>
                 <Paper className={classes.paper}>xs=6</Paper>
