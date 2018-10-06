@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Search } from 'react-store-locator';
-import { Map } from 'react-store-locator';
 import MapLocator from '../map/MapLocator';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { createMuiTheme } from '@material-ui/core/styles';
-import yellow from '@material-ui/core/colors/yellow';
-import deepOrange from '@material-ui/core/colors/deepOrange';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import NavContainer from '../../containers/NavContainer';
 
