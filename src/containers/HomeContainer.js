@@ -3,9 +3,9 @@ import Home from '../components/home/Home';
 import * as actions from '../_actions';
 
 const mapStateToProps = state => {
-  isMenuOpen: state.navReducer.isMenuOpen;
+  return { categoriesReducer: state.categoriesReducer };
 };
 
-const NavContainer = connect(null, actions)(Home);
+const NavContainer = connect(mapStateToProps, actions)(Home);
 
 export default NavContainer;
