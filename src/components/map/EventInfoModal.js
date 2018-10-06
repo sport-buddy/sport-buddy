@@ -8,11 +8,16 @@ class EventInfoModal extends Component {
     let location = this.props.location;
     let closeLocation = this.props.closeLocation;
 
+    const infoStyle = {
+      width: '300px',
+      height: '200px',
+    };
+
     return (
-      <Info show={location.show}>
-        <div style={{width: '300px', height: '200px'}}>
+      <Info show={location.show} style={infoStyle}>
+        <div>
           <Location />
-          <div onClick={() => closeLocation(location.id)}></div>
+          <div onClick={() => closeLocation(location.id)}>[x]</div>
         </div>
       </Info>
     )
