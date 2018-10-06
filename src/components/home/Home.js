@@ -16,7 +16,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#FFD54F',
-      main: '#FFC107',
+      main: '#004D40',
       dark: '#FF6F00',
       contrastText: '#fff'
     },
@@ -42,21 +42,23 @@ class Home extends Component {
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <Grid container spacing={24}>
-          <Grid item xs={12}>
-            <Navbar />
+        <div className="Home">
+          <Grid container spacing={24}>
+            <Grid item xs={12}>
+              <Navbar />
+            </Grid>
+            <Grid item xs={12} sm={5}>
+              <div className={classes.paper}>
+                <Paper className={classes.paper}>xs=6</Paper>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={7}>
+              <div className={classes.paper}>
+                <MapLocator className={classes.paper} />
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={5}>
-            <div className={classes.paper}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={7}>
-            <div className={classes.paper}>
-              <MapLocator className={classes.paper} />
-            </div>
-          </Grid>
-        </Grid>
+        </div>
       </MuiThemeProvider>
     );
   }

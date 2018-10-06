@@ -16,6 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Logo from '../../assets/images/10million.png';
 
 const styles = theme => ({
   root: {
@@ -181,27 +182,18 @@ class PrimarySearchAppBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              className={classes.title}
-              variant="title"
-              color="inherit"
-              noWrap
-            >
-              SportBuddy
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <Input
-                placeholder="Search…"
-                disableUnderline
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
+            <div className="logo-box">
+              <Typography
+                className={classes.title}
+                variant="title"
+                color="inherit"
+                noWrap
+              >
+                SportBuddy
+              </Typography>
             </div>
+            <img src={Logo} width="100px" className="margin-left-10" />
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
