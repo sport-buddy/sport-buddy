@@ -31,8 +31,8 @@ class Home extends Component {
     return (
       <div className="MapLocator">
         <Map
-          height={'400px'}
-          width={'300px'}
+          height={'600'}
+          width={'500px'}
           locations={locations}
           googleApiKey={'Your Key Here'}
         />
