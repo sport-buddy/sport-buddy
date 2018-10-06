@@ -18,7 +18,7 @@ class EventInfoModal extends Component {
     const { classes } = this.props;
 
     return (
-      <Info show={location.show} style={infoStyle}>
+      <Info show={this.props.loaded && this.props.locationId === location.id} style={infoStyle}>
         <div>
           <Paper className={classes.paper}>
             <Location />

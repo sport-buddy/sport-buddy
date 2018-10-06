@@ -5,6 +5,13 @@ import EventInfoModal from "./EventInfoModal";
 import icon from '../../assets/images/basketball-icon.png';
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {loaded: false, locationId: null};
+  }
+
   render() {
     const locations = [
       {
@@ -30,12 +37,34 @@ class Home extends Component {
       }
     ];
 
+    const myPin = (props) => (
+      <div
+        style={{
+          cursor: 'pointer',
+          backgroundColor: 'purple',
+          height: '25px',
+          width: '25px',
+          border: '2px solid white'
+        }}
+        onClick={() => {
+          this.setState(prev => ({loaded: !prev.loaded, locationId: props.id}));
+          props.handleLocationClick(props.id)}
+        }
+      >
+        {props.children}
+      </div>
+    );
+
     return (
       <div className="MapLocator">
-        <Map locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
+        <Map pin={myPin} locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
           {(location, closeLocation) => {
             return (
-              <EventInfoModal location={location} closeLocation={closeLocation}/>
+              <EventInfoModal
+                location={location}
+                closeLocation={closeLocation}
+                loaded={this.state.loaded}
+                locationId={this.state.locationId}/>
             )
           }}
         </Map>
