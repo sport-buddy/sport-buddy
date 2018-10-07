@@ -9,22 +9,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 class SportFilters extends Component {
-
-  handleSubmit = (eventId) => {
-    this.props.joinEvent({userId: 1, eventId: eventId});
+  handleSubmit = eventId => {
+    this.props.joinEvent({ userId: 1, eventId: eventId });
   };
 
-  getEventTime = (event) => {
+  getEventTime = event => {
     let startTime = moment(event.start_at);
     let endTime = moment(event.end_at);
 
-    return (startTime.format('MM-DD H:mm') + ' - ' + endTime.format('H:mm'));
+    return startTime.format('MM-DD H:mm') + ' - ' + endTime.format('H:mm');
   };
 
   render() {
     const showEvents = () => {
       let eventList = [];
-      this.props.filterLocations.data.map(location => {
+      const events = this.props.filterLocations.data.map(location => {
         location.events.map(event => {
           if (event.length !== 0) {
             event['address'] = location.address;
@@ -32,50 +31,64 @@ class SportFilters extends Component {
           }
         });
       });
-
       return eventList.map(l => {
         return (
-          <Paper key={l.id} style={{ margin: 5, padding: 10, marginBottom: 25 }}>
+          <Paper
+            key={l.id}
+            style={{ margin: 5, padding: 10, marginBottom: 25 }}
+          >
             <Table>
               <TableHead>
                 <TableRow style={{ height: 34 }}>
-                  <TableCell style={{fontSize: 16}}>{l.name}</TableCell>
-                  <TableCell/>
+                  <TableCell style={{ fontSize: 16 }}>{l.name}</TableCell>
+                  <TableCell />
                 </TableRow>
               </TableHead>
               <TableBody>
-
-                <TableRow  style={{ height: 34 }}>
-                  <TableCell component="th" scope="row">Adresas</TableCell>
-                  <TableCell component="th" scope="row">{l.address}</TableCell>
+                <TableRow style={{ height: 34 }}>
+                  <TableCell component="th" scope="row">
+                    Adresas
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {l.address}
+                  </TableCell>
                 </TableRow>
 
-                <TableRow  style={{ height: 34 }}>
-                  <TableCell component="th" scope="row">Planuojamas laikas</TableCell>
-                  <TableCell component="th" scope="row">{this.getEventTime(l)}</TableCell>
+                <TableRow style={{ height: 34 }}>
+                  <TableCell component="th" scope="row">
+                    Planuojamas laikas
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {this.getEventTime(l)}
+                  </TableCell>
                 </TableRow>
 
-                <TableRow  style={{ height: 34 }}>
-                  <TableCell component="th" scope="row">Dalyvių kiekis</TableCell>
-                  <TableCell component="th" scope="row">{l.min_participants} - {l.max_participants}</TableCell>
+                <TableRow style={{ height: 34 }}>
+                  <TableCell component="th" scope="row">
+                    Dalyvių kiekis
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {l.min_participants} - {l.max_participants}
+                  </TableCell>
                 </TableRow>
 
-                <TableRow  style={{ height: 34 }}>
-                  <TableCell component="th" scope="row">Prisijungusiu žmonių kiekis</TableCell>
-                  <TableCell component="th" scope="row">{l.participants.length}</TableCell>
+                <TableRow style={{ height: 34 }}>
+                  <TableCell component="th" scope="row">
+                    Prisijungusiu žmonių kiekis
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {l.participants.length}
+                  </TableCell>
                 </TableRow>
-
-                <TableRow  style={{ height: 34 }}>
-                  <TableCell component="th" scope="row">Komentaras</TableCell>
-                  <TableCell component="th" scope="row">{l.comment ? l.comment : 'Komentaro nėra'}</TableCell>
-                </TableRow>
-
               </TableBody>
             </Table>
 
-            <Button fullWidth variant="raised" color="primary"
-                    onClick={() => this.handleSubmit(l.id)}
-                    style={{marginTop: 10, marginBottom: 10}}
+            <Button
+              fullWidth
+              variant="raised"
+              color="primary"
+              onClick={() => this.handleSubmit(l.id)}
+              style={{ marginTop: 10, marginBottom: 10 }}
             >
               Prisijungti
             </Button>
