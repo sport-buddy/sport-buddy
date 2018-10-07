@@ -1,9 +1,12 @@
-import { CREATE_EVENT } from '../_actions/types';
+import { CREATE_EVENT, JOIN_EVENT } from '../_actions/types';
 
-export default function(state=null, action) {
+export default function(state = null, action) {
   switch (action.type) {
     case CREATE_EVENT: {
       return { ...state, created: action.payload };
+    }
+    case JOIN_EVENT: {
+      return { ...state, joined: action.payload };
     }
     default:
       return state;

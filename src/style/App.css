@@ -70,6 +70,6 @@
   margin-left: 10px;
 }
 
-.storeLocatorInput {
+.storeLocatorInput, .gm-style > button {
   display: none;
 }
