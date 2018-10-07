@@ -90,7 +90,8 @@ export const createEventAction = createEventData => {
   return function(dispatch) {
     return createEvent(createEventData)
       .then(response => {
-        return dispatch({ type: CREATE_EVENT, payload: response.data });
+        dispatch({ type: CREATE_EVENT, payload: response.data });
+        return dispatch(fetchLocationsActions());
       })
       .catch(error => {
         if (error) {
@@ -105,8 +106,8 @@ export const joinEventAction = joinEventData => {
   return function(dispatch) {
     return joinEvent(joinEventData)
       .then(response => {
-        console.log(response.data);
-        return dispatch({ type: JOIN_EVENT, payload: response.data });
+        dispatch({ type: JOIN_EVENT, payload: response.data });
+        return dispatch(fetchLocationsActions());
       })
       .catch(error => {
         if (error) {
