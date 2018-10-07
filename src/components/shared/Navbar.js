@@ -14,7 +14,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Logo from '../../assets/images/10million.png';
 import MenuDrawer from './MenuDrawer';
 
 const styles = theme => ({
@@ -88,7 +87,7 @@ const styles = theme => ({
   userName: {
     fontSize: 16,
     marginRight: 20
-  },
+  }
 });
 
 class PrimarySearchAppBar extends React.Component {
@@ -193,12 +192,7 @@ class PrimarySearchAppBar extends React.Component {
                 SportBuddy
               </Typography>
             </div>
-            <img
-              src={Logo}
-              alt="logo"
-              width="100px"
-              className="margin-left-10"
-            />
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
