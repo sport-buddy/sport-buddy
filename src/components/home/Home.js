@@ -41,7 +41,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.filterLocations.data);
     const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
@@ -72,7 +71,10 @@ class Home extends Component {
             </Grid>
             <Grid item xs={12} sm={7}>
               <div className={classes.paper}>
-                <MapLocator className={classes.paper} locations={this.props.filterLocations.data} />
+                <MapLocator
+                  className={classes.paper}
+                  locations={this.props.filterLocations.data}
+                />
               </div>
             </Grid>
           </Grid>
