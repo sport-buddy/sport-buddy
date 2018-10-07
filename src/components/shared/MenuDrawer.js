@@ -7,7 +7,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/Inbox';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Settings from '@material-ui/icons/Settings';
+import Face from '@material-ui/icons/Face';
 
 const styles = {
   list: {
@@ -25,22 +27,29 @@ class MenuDrawer extends React.Component {
     const fullList = (
       <div className={classes.fullList}>
         <List>
-          {' '}
           <ListItem button>
             <ListItemIcon>
-              <InboxIcon />
+              <Settings />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="Nustatymai" />
           </ListItem>
         </List>
         <Divider />
         <List>
-          {' '}
           <ListItem button>
             <ListItemIcon>
-              <InboxIcon />
+              <AccountCircle />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="Profilis" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <Face />
+            </ListItemIcon>
+            <ListItemText primary="Draugai" />
           </ListItem>
         </List>
       </div>
