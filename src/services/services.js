@@ -30,6 +30,7 @@ export function createEvent(eventData) {
 }
 
 export function joinEvent(joinData) {
+  console.log(joinData);
   return axios.post(
     'https://shrouded-inlet-61901.herokuapp.com/events/' + joinData.eventId + '/participate/' + joinData.userId,
     config

@@ -39,7 +39,6 @@ class Home extends Component {
   componentDidMount() {
     this.props.fetchCategoriesAction();
     this.props.fetchLocationsActions();
-    console.log(this.props.joinEventAction({userId: 1, eventId: 8}));
   }
 
   render() {
@@ -68,7 +67,10 @@ class Home extends Component {
             <Grid item xs={12} sm={5}>
               <div className={classes.paper}>
                 <Paper className={classes.paper}>
-                  <EventList filterLocations={this.props.filterLocations}>
+                  <EventList
+                    filterLocations={this.props.filterLocations}
+                    joinEvent={this.props.joinEventAction}
+                  >
                     xs=6
                   </EventList>
                 </Paper>
