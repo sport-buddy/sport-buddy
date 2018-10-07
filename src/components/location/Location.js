@@ -22,6 +22,7 @@ function getModalStyle() {
 const styles = theme => ({
   card: {
     minWidth: 275,
+    height: 210,
   },
   title: {
     fontSize: 20,
@@ -58,6 +59,14 @@ class Location extends Component {
     this.setState({ open: false });
   };
 
+  getFitnessDescription = (location) => {
+    if (location.type === 'fitness') {
+        return ('Treniriuoklų kiekis: ' + location.properties.count)
+    }
+
+    return ''
+  };
+
 
   render() {
     const { classes, location } = this.props;
@@ -70,6 +79,7 @@ class Location extends Component {
               {location.address}
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
+              {this.getFitnessDescription(location)} <br/>
               {location.properties.details}
             </Typography>
             <hr/>
