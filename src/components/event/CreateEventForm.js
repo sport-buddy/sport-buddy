@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
@@ -18,8 +19,8 @@ class CreateEventForm extends Component {
       comment: null,
       max_participants: 0,
       min_participants: 0,
-      start_at: moment().format('YYYY-MM-DD h:00'),
-      end_at: moment().format('YYYY-MM-DD h:00'),
+      start_at: moment().format('YYYY-MM-DD H:00'),
+      end_at: moment().format('YYYY-MM-DD H:00'),
       location_id: this.props.location.id,
       category_id: 1,
     };
@@ -50,7 +51,10 @@ class CreateEventForm extends Component {
   };
 
   handleSubmit = (event) => {
-    this.props.createEventAction(this.state);
+    this.props.createEventAction(Object.assign({}, this.state, {
+      start_at: moment(this.state.start_at).format('YYYY-MM-DD H:mm'),
+      end_at: moment(this.state.end_at).format('YYYY-MM-DD H:mm'),
+    }));
   };
 
   render() {
@@ -66,13 +70,25 @@ class CreateEventForm extends Component {
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Planuojama varžybų pradžia</InputLabel>
-            <Input label="Start time" name="startTime" id="startTime" value={start_at} onChange={this.handleStartTimeChange} />
+            <TextField
+              id="datetime-local"
+              label="Planuojama varžybų pradžia"
+              type="datetime-local"
+              defaultValue={start_at}
+              InputLabelProps={{shrink: true}}
+              onChange={this.handleStartTimeChange}
+            />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Planuojama varžybų pabaiga</InputLabel>
-            <Input label="End time" name="endTime" id="endTime" value={end_at} onChange={this.handleEndTimeChange}/>
+            <TextField
+              id="datetime-local"
+              label="Planuojama varžybų pabaiga"
+              type="datetime-local"
+              defaultValue={end_at}
+              InputLabelProps={{shrink: true}}
+              onChange={this.handleEndTimeChange}
+            />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
@@ -85,7 +101,7 @@ class CreateEventForm extends Component {
             <Slider value={max_participants} min={min_participants} max={20} step={1} onChange={this.handleMaxCountChange} />
           </FormControl>
 
-          <FormControl margin="normal" required fullWidth>
+          <FormControl margin="normal" fullWidth>
             <InputLabel htmlFor="comment">Papildomas komentaras</InputLabel>
             <Input name="comment" id="comment" multiline={true} rows="3" onChange={this.handleCommentChange}/>
           </FormControl>
