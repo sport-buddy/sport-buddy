@@ -216,7 +216,7 @@ class PrimarySearchAppBar extends React.Component {
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
-                <span className={classes.userName}>John Motherfucking Doe</span>
+                <span className={classes.userName}>John Doe</span>
                 <AccountCircle />
               </IconButton>
             </div>

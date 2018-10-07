@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Map } from 'react-store-locator';
-import { MAP_API_KEY } from '../../config';
+import { MAP_API_KEY, INITIAL_MAP_LOCATION } from '../../config';
 import EventInfoModal from "./EventInfoModal";
-import icon from '../../assets/images/basketball-icon.png';
 
 class Home extends Component {
 
@@ -13,38 +12,15 @@ class Home extends Component {
   }
 
   render() {
-    const locations = [
-      {
-        id: 1,
-        lat: 50,
-        lng: 25.1,
-        show: false,
-        name: 'First Marker'
-      },
-      {
-        id: 2,
-        lat: 50,
-        lng: 25.2,
-        show: false,
-        name: 'Second Marker'
-      },
-      {
-        id: 3,
-        lat: 50,
-        lng: 25.3,
-        show: false,
-        name: 'Third Marker'
-      }
-    ];
-
     const myPin = (props) => (
       <div
         style={{
           cursor: 'pointer',
-          backgroundColor: 'purple',
+          backgroundColor: '#004D40',
           height: '25px',
           width: '25px',
-          border: '2px solid white'
+          border: '2px solid #FFD54F',
+          borderRadius: '50%'
         }}
         onClick={() => {
           this.setState(prev => ({loaded: !prev.loaded, locationId: props.id}));
@@ -57,7 +33,7 @@ class Home extends Component {
 
     return (
       <div className="MapLocator">
-        <Map pin={myPin} locations={locations} googleApiKey={MAP_API_KEY} icon={icon}>
+        <Map pin={myPin} locations={this.props.locations} googleApiKey={MAP_API_KEY} initSearch={ INITIAL_MAP_LOCATION }>
           {(location, closeLocation) => {
             return (
               <EventInfoModal

@@ -60,21 +60,21 @@ class Location extends Component {
 
 
   render() {
-    const { classes } = this.props;
+    const { classes, location } = this.props;
 
     return (
       <div>
         <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title}>
-              Basketball court
+              {location.address}
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
-              Du lankai, du tinkleliai, trys dirbantys programuotojai
+              {location.properties.details}
             </Typography>
             <hr/>
             <Typography className={classes.pos} color="textSecondary">
-              Adresas: pas tavo mama
+              Rajonas: {location.district}
             </Typography>
           </CardContent>
           <CardActions>
@@ -83,7 +83,7 @@ class Location extends Component {
                     color="primary"
                     size="medium"
                     onClick={this.handleOpen}>
-              Create event
+              Sukurti varžybas
             </Button>
           </CardActions>
         </Card>
@@ -94,8 +94,8 @@ class Location extends Component {
           onClose={this.handleClose}
         >
           <div className={classes.paper} style={getModalStyle()}>
-            <Typography variant="headline">Create Event at kazkoks adresas</Typography>
-            <CreateEventForm  />
+            <Typography variant="headline">Sukurti varžybas {location.address}</Typography>
+            <CreateEventForm location={location}  />
           </div>
         </Modal>
       </div>

@@ -20,6 +20,11 @@ export const fetchLocationsActions = () => {
   return function(dispatch) {
     return fetchLocations()
       .then(response => {
+        let locations = response.data;
+        locations.forEach(function(obj) {
+          obj['loaded'] = false;
+        });
+
         dispatch({ type: FETCH_LOCATIONS, payload: response.data });
         return dispatch({
           type: FILTER_LOCATION,

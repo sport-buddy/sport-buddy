@@ -20,7 +20,7 @@ class CreateEventForm extends Component {
       min_participants: 0,
       start_at: moment().format('YYYY-MM-DD h:00'),
       end_at: moment().format('YYYY-MM-DD h:00'),
-      location_id: 1,
+      location_id: this.props.location.id,
       category_id: 1,
     };
   }
@@ -61,37 +61,37 @@ class CreateEventForm extends Component {
       <div>
         <form className={classes.form} noValidate>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="name">Event name</InputLabel>
+            <InputLabel htmlFor="name">Varžybų pavadinimas</InputLabel>
             <Input id="name" name="name" autoFocus onChange={this.handleNameChange}/>
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Event start time</InputLabel>
+            <InputLabel>Planuojama varžybų pradžia</InputLabel>
             <Input label="Start time" name="startTime" id="startTime" value={start_at} onChange={this.handleStartTimeChange} />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Event end time</InputLabel>
+            <InputLabel>Planuojama varžybų pabaiga</InputLabel>
             <Input label="End time" name="endTime" id="endTime" value={end_at} onChange={this.handleEndTimeChange}/>
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Needed minimum players: {min_participants}</InputLabel>
+            <InputLabel>Minimalus žaidėjų skaičius: {min_participants}</InputLabel>
             <Slider value={min_participants} min={0} max={20} step={1} onChange={this.handleMinCountChange} />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Needed maximum players: {max_participants}</InputLabel>
+            <InputLabel>Maksimalus žaidėjų skaičius: {max_participants}</InputLabel>
             <Slider value={max_participants} min={min_participants} max={20} step={1} onChange={this.handleMaxCountChange} />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="comment">Comment</InputLabel>
+            <InputLabel htmlFor="comment">Papildomas komentaras</InputLabel>
             <Input name="comment" id="comment" multiline={true} rows="3" onChange={this.handleCommentChange}/>
           </FormControl>
 
           <Button type="button" fullWidth variant="raised" color="primary" className={classes.submit} onClick={this.handleSubmit}>
-            Create
+            Sukurti
           </Button>
         </form>
       </div>
