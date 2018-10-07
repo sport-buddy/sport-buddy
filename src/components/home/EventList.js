@@ -65,6 +65,11 @@ class SportFilters extends Component {
                   <TableCell component="th" scope="row">{l.participants.length}</TableCell>
                 </TableRow>
 
+                <TableRow  style={{ height: 34 }}>
+                  <TableCell component="th" scope="row">Komentaras</TableCell>
+                  <TableCell component="th" scope="row">{l.comment ? l.comment : 'Komentaro nėra'}</TableCell>
+                </TableRow>
+
               </TableBody>
             </Table>
 
