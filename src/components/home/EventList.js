@@ -24,7 +24,7 @@ class SportFilters extends Component {
   render() {
     const showEvents = () => {
       let eventList = [];
-      const events = this.props.filterLocations.data.map(location => {
+      this.props.filterLocations.data.map(location => {
         location.events.map(event => {
           if (event.length !== 0) {
             event['address'] = location.address;
@@ -32,6 +32,7 @@ class SportFilters extends Component {
           }
         });
       });
+
       return eventList.map(l => {
         return (
           <Paper key={l.id} style={{ margin: 5, padding: 10, marginBottom: 25 }}>

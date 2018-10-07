@@ -25,7 +25,7 @@ export const fetchCategoriesAction = () => {
       })
       .catch(error => {
         if (error) {
-          console.log(error);
+          console.error(error);
         }
         return Promise.reject({});
       });
@@ -76,7 +76,7 @@ export const fetchLocationsActions = () => {
       })
       .catch(error => {
         if (error) {
-          console.log(error);
+          console.error(error);
         }
         return Promise.reject({});
       })
@@ -95,7 +95,7 @@ export const createEventAction = createEventData => {
       })
       .catch(error => {
         if (error) {
-          console.log(error);
+          console.error(error);
         }
         return Promise.reject({});
       });
