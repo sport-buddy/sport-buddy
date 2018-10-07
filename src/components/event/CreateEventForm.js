@@ -5,6 +5,9 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
+import * as actions from '../../_actions';
+import { connect } from 'react-redux';
+import moment from 'moment';
 
 class CreateEventForm extends Component {
   constructor(props) {
@@ -13,14 +16,21 @@ class CreateEventForm extends Component {
     this.state = {
       name: null,
       comment: null,
-      count: 0,
-      startTime: new Date(),
-      endTime: new Date()
+      max_participants: 0,
+      min_participants: 0,
+      start_at: moment().format('YYYY-MM-DD h:00'),
+      end_at: moment().format('YYYY-MM-DD h:00'),
+      location_id: 1,
+      category_id: 1,
     };
   }
 
-  handleCountChange = (event, count) => {
-    this.setState({ count });
+  handleMinCountChange = (event, min_participants) => {
+    this.setState({ min_participants });
+  };
+
+  handleMaxCountChange = (event, max_participants) => {
+    this.setState({ max_participants });
   };
 
   handleCommentChange = (event) => {
@@ -32,19 +42,21 @@ class CreateEventForm extends Component {
   };
 
   handleEndTimeChange = (event) => {
-    this.setState({ endTime: event.target.value });
+    this.setState({ end_at: event.target.value });
   };
 
   handleStartTimeChange = (event) => {
-    this.setState({ startTime: event.target.value });
+    this.setState({ start_at: event.target.value });
   };
 
   handleSubmit = (event) => {
-    console.log(this.state);
+    this.props.createEventAction(this.state);
   };
 
   render() {
     const {classes} = this.props;
+    const {min_participants, max_participants, start_at, end_at} = this.state;
+
     return (
       <div>
         <form className={classes.form} noValidate>
@@ -54,23 +66,29 @@ class CreateEventForm extends Component {
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <Input label="Start time" name="startTime" id="startTime" onChange={this.handleStartTimeChange} />
+            <InputLabel>Event start time</InputLabel>
+            <Input label="Start time" name="startTime" id="startTime" value={start_at} onChange={this.handleStartTimeChange} />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <Input label="End time" name="endTime" id="endTime" onChange={this.handleEndTimeChange}/>
+            <InputLabel>Event end time</InputLabel>
+            <Input label="End time" name="endTime" id="endTime" value={end_at} onChange={this.handleEndTimeChange}/>
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
-            <InputLabel>Needed players: {this.state.count}</InputLabel>
-            <Slider value={this.state.count} min={0} max={20} step={1} onChange={this.handleCountChange} />
+            <InputLabel>Needed minimum players: {min_participants}</InputLabel>
+            <Slider value={min_participants} min={0} max={20} step={1} onChange={this.handleMinCountChange} />
+          </FormControl>
+
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel>Needed maximum players: {max_participants}</InputLabel>
+            <Slider value={max_participants} min={min_participants} max={20} step={1} onChange={this.handleMaxCountChange} />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="comment">Comment</InputLabel>
             <Input name="comment" id="comment" multiline={true} rows="3" onChange={this.handleCommentChange}/>
           </FormControl>
-
 
           <Button type="button" fullWidth variant="raised" color="primary" className={classes.submit} onClick={this.handleSubmit}>
             Create
@@ -81,4 +99,12 @@ class CreateEventForm extends Component {
   }
 }
 
-export default withStyles({})(CreateEventForm);
+const mapStateToProps = state => {
+  return {
+    eventReducer: state.eventReducer
+  };
+};
+
+const eventCreate = connect(mapStateToProps, actions)(CreateEventForm);
+
+export default withStyles({})(eventCreate);

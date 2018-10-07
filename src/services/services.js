@@ -20,3 +20,13 @@ export function fetchLocations() {
     config
   );
 }
+
+export function createEvent(eventData) {
+  console.log(eventData);
+
+  return axios.post(
+    'https://shrouded-inlet-61901.herokuapp.com/events',
+    eventData,
+    config
+  );
+}

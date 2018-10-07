@@ -1,5 +1,5 @@
-import { fetchCategories, fetchLocations } from '../services/services';
-import { FETCH_CATEGORIES, FETCH_LOCATIONS, FILTER_LOCATION } from './types';
+import { fetchCategories, fetchLocations, createEvent } from '../services/services';
+import { FETCH_CATEGORIES, FETCH_LOCATIONS, FILTER_LOCATION, CREATE_EVENT } from './types';
 
 export const fetchCategoriesAction = () => {
   return function(dispatch) {
@@ -25,6 +25,21 @@ export const fetchLocationsActions = () => {
           type: FILTER_LOCATION,
           payload: { data: response.data, type: 'basketball' }
         });
+      })
+      .catch(error => {
+        if (error) {
+          console.log(error);
+        }
+        return Promise.reject({});
+      });
+  };
+};
+
+export const createEventAction = (createEventData) => {
+  return function(dispatch) {
+    return createEvent(createEventData)
+      .then(response => {
+        return dispatch({ type: CREATE_EVENT, payload: response.data });
       })
       .catch(error => {
         if (error) {
