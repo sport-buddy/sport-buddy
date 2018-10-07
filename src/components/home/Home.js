@@ -8,6 +8,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import NavContainer from '../../containers/NavContainer';
 import SportFilters from './SportFilters';
 import EventList from './EventList';
+import Loader from "../shared/Loader";
 
 const theme = createMuiTheme({
   palette: {
@@ -45,6 +46,9 @@ class Home extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="Home">
+          {this.props.loaderReducer.isLoading && (
+            <Loader/>
+          )}
           <Grid item xs={12}>
             <NavContainer />
           </Grid>
