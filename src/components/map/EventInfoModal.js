@@ -11,7 +11,7 @@ class EventInfoModal extends Component {
 
     const infoStyle = {
       width: '300px',
-      height: '200px'
+      height: '210px',
     };
 
     const { classes } = this.props;

@@ -21,7 +21,7 @@ class CreateEventForm extends Component {
       start_at: moment().format('YYYY-MM-DD h:00'),
       end_at: moment().format('YYYY-MM-DD h:00'),
       location_id: this.props.location.id,
-      category_id: 1,
+      category_id: this.props.location.type === 'fitness' ? 4 : 1,
     };
   }
 
