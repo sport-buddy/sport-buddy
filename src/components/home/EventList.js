@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 class SportFilters extends Component {
   render() {
@@ -15,7 +18,17 @@ class SportFilters extends Component {
         });
       });
       return eventList.map(l => {
-        return <div key={l.id}>{l.name}</div>;
+        return (
+          <Paper key={l.id} style={{ margin: 5 }}>
+            <Typography variant="headline" component="h6">
+              {l.name}
+            </Typography>
+            <Typography component="p">{`Dalyvių skaičius: ${
+              l.min_participants
+            } - ${l.max_participants}`}</Typography>
+            <Button color="primary">Prisijungti</Button>
+          </Paper>
+        );
       });
     };
 
