@@ -39,6 +39,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.fetchCategoriesAction();
     this.props.fetchLocationsActions();
+    console.log(this.props.joinEventAction({userId: 1, eventId: 8}));
   }
 
   render() {

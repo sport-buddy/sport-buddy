@@ -22,11 +22,16 @@ export function fetchLocations() {
 }
 
 export function createEvent(eventData) {
-  console.log(eventData);
-
   return axios.post(
     'https://shrouded-inlet-61901.herokuapp.com/events',
     eventData,
+    config
+  );
+}
+
+export function joinEvent(joinData) {
+  return axios.post(
+    'https://shrouded-inlet-61901.herokuapp.com/events/' + joinData.eventId + '/participate/' + joinData.userId,
     config
   );
 }

@@ -1,7 +1,8 @@
 import {
   fetchCategories,
   fetchLocations,
-  createEvent
+  createEvent,
+  joinEvent
 } from '../services/services';
 import {
   FETCH_CATEGORIES,
@@ -11,6 +12,7 @@ import {
   FILTER_LOCATION_RUNNING,
   FILTER_LOCATION_TABLETENNIS,
   CREATE_EVENT,
+  JOIN_EVENT,
   LOADING_STARTED,
   LOADING_ENDED
 } from './types';
@@ -89,6 +91,22 @@ export const createEventAction = createEventData => {
     return createEvent(createEventData)
       .then(response => {
         return dispatch({ type: CREATE_EVENT, payload: response.data });
+      })
+      .catch(error => {
+        if (error) {
+          console.log(error);
+        }
+        return Promise.reject({});
+      });
+  };
+};
+
+export const joinEventAction = joinEventData => {
+  return function(dispatch) {
+    return joinEvent(joinEventData)
+      .then(response => {
+        console.log(response.data);
+        return dispatch({ type: JOIN_EVENT, payload: response.data });
       })
       .catch(error => {
         if (error) {
