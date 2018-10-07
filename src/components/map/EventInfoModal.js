@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Info } from 'react-store-locator';
-import Location from '../location/Location';
 import Paper from '@material-ui/core/Paper';
+import LocationContainer from '../../containers/LocationContainer.js'
 
 class EventInfoModal extends Component {
   render() {
@@ -20,7 +20,7 @@ class EventInfoModal extends Component {
       <Info show={this.props.loaded && this.props.locationId === location.id} style={infoStyle}>
         <div>
           <Paper className={classes.paper}>
-            <Location />
+            <LocationContainer location={location} />
             <div onClick={() => closeLocation(location.id)}>[x]</div>
           </Paper>
         </div>

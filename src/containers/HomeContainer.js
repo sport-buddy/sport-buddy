@@ -7,6 +7,7 @@ const mapStateToProps = state => {
     categoriesReducer: state.categoriesReducer,
     locationReducer: state.locationReducer,
     filterLocations: state.filterLocationsReducer
+    eventReducer: state.eventReducer
   };
 };
 

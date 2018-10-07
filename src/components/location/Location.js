@@ -95,7 +95,7 @@ class Location extends Component {
         >
           <div className={classes.paper} style={getModalStyle()}>
             <Typography variant="headline">Create Event at kazkoks adresas</Typography>
-            <CreateEventForm />
+            <CreateEventForm  />
           </div>
         </Modal>
       </div>
