@@ -7,6 +7,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import NavContainer from '../../containers/NavContainer';
 import SportFilters from './SportFilters';
+import EventList from './EventList';
 
 const theme = createMuiTheme({
   palette: {
@@ -52,12 +53,21 @@ class Home extends Component {
             <SportFilters
               fetchCategoriesAction={this.props.fetchCategoriesAction}
               categoriesReducer={this.props.categoriesReducer}
+              filterBasketballAction={this.props.filterBasketballAction}
+              filterFitnessAction={this.props.filterFitnessAction}
+              filterRunningAction={this.props.filterRunningAction}
+              filterTabbleTennisAction={this.props.filterTabbleTennisAction}
+              locationReducer={this.props.locationReducer}
             />
           </Grid>
           <Grid container spacing={24}>
             <Grid item xs={12} sm={5}>
               <div className={classes.paper}>
-                <Paper className={classes.paper}>xs=6</Paper>
+                <Paper className={classes.paper}>
+                  <EventList filterLocations={this.props.filterLocations}>
+                    xs=6
+                  </EventList>
+                </Paper>
               </div>
             </Grid>
             <Grid item xs={12} sm={7}>

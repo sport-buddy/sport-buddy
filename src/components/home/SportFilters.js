@@ -21,6 +21,22 @@ class SportFilters extends Component {
               this.setState({
                 value: i
               });
+              if (i === 0) {
+                this.props.filterBasketballAction(
+                  this.props.locationReducer.data
+                );
+              }
+              if (i === 1) {
+                this.props.filterRunningAction(this.props.locationReducer.data);
+              }
+              if (i === 2) {
+                this.props.filterTabbleTennisAction(
+                  this.props.locationReducer.data
+                );
+              }
+              if (i === 3) {
+                this.props.filterFitnessAction(this.props.locationReducer.data);
+              }
             }}
           />
         );
