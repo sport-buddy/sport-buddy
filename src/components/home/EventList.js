@@ -84,13 +84,18 @@ class SportFilters extends Component {
             </Table>
 
             <Button
+              disabled={l.participants.filter(u => u.id === 1).length > 0}
               fullWidth
               variant="raised"
               color="primary"
-              onClick={() => this.handleSubmit(l.id)}
+              onClick={() => {
+                this.handleSubmit(l.id);
+              }}
               style={{ marginTop: 10, marginBottom: 10 }}
             >
-              Prisijungti
+              {l.participants.filter(u => u.id === 1).length > 0
+                ? 'Prisijungęs'
+                : 'Prisijungti'}
             </Button>
           </Paper>
         );
