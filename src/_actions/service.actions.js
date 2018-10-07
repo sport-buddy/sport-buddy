@@ -10,7 +10,9 @@ import {
   FILTER_LOCATION_FITNESS,
   FILTER_LOCATION_RUNNING,
   FILTER_LOCATION_TABLETENNIS,
-  CREATE_EVENT
+  CREATE_EVENT,
+  LOADING_STARTED,
+  LOADING_ENDED
 } from './types';
 
 export const fetchCategoriesAction = () => {
@@ -58,6 +60,8 @@ export const filterTabbleTennisAction = data => {
 
 export const fetchLocationsActions = () => {
   return function(dispatch) {
+    dispatch({ type: LOADING_STARTED });
+
     return fetchLocations()
       .then(response => {
         let locations = response.data;
@@ -73,6 +77,9 @@ export const fetchLocationsActions = () => {
           console.log(error);
         }
         return Promise.reject({});
+      })
+      .finally(() => {
+        dispatch({ type: LOADING_ENDED });
       });
   };
 };

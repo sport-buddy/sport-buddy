@@ -7,10 +7,11 @@ const mapStateToProps = state => {
     categoriesReducer: state.categoriesReducer,
     locationReducer: state.locationReducer,
     filterLocations: state.filterLocationsReducer,
-    eventReducer: state.eventReducer
+    eventReducer: state.eventReducer,
+    loaderReducer: state.loaderReducer,
   };
 };
 
-const NavContainer = connect(mapStateToProps, actions)(Home);
+const HomeContainer = connect(mapStateToProps, actions)(Home);
 
-export default NavContainer;
+export default HomeContainer;
